@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DiaryController@index');
+Route::get('/diaries/create', 'DiaryController@create');
+Route::get('/diaries/{diary}', 'DiaryController@show');
+
+Route::post('/diaries', 'DiaryController@store');
+Route::get('/diaries/{diary}/edit', 'DiaryController@edit');
+Route::put('/diaries/{diary}', 'DiaryController@update');
+Route::delete('/diaries/{diary}', 'DiaryController@delete');
