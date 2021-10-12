@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diary extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
     
     protected $fillable = [
     'title',
-    'body',
+    'date',
     ];
+    
+    public function templates() {
+        return $this->hasMany("App\Template");
+    }
 }
