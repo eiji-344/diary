@@ -29,9 +29,9 @@
                 </thead>
                 <tbody>
                    <tr>
-                    <td><input type="time" name="template[time][0]"/></td>
-                    <td><input type="subtitle" name="template[subtitle][0]"/></td>
-        　           <td><textarea name="template[text][0]" placeholder="〇〇に行った">{{ old('template.text') }}</textarea></td>
+                    <td><input type="time" name="template[0][time]"/></td>
+                    <td><input type="subtitle" name="template[0][subtitle]"/></td>
+        　           <td><textarea name="template[0][text]" placeholder="〇〇に行った">{{ old('template.text') }}</textarea></td>
                    </tr>
                 </tbody>
         　  </table>

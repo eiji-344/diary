@@ -22,9 +22,14 @@ class DiaryController extends Controller
         return view('index')->with(['diaries' => $diary->get()]); 
     }
     
-    public function show(Diary $diary)
+    public function show(Diary $diary, Template $template)
     {
-    return view('show')->with(['diary' => $diary]);
+        $templates = $diary->templates;
+
+        return view('show')->with([
+            'diary' => $diary,
+            'templates' => $templates
+            ]);
     }
     
     public function create(Diary $diary)
@@ -42,10 +47,19 @@ class DiaryController extends Controller
     'title' => $diary_input['title'],
     'date' => $diary_input['date'],
     ]);
-    //$diary->fill($diary_input)->save();
-    $template_input = $request['template'];
-    dd($template_input);
-    $template_input['diary_id'] = $diary->id;
+    
+    $template_inputs = $request['template'];
+    foreach($template_inputs as $template_input){
+        $template_input['diary_id'] = $diary->id;
+        $template = Template::create([
+        'subtitle' => $template_input['subtitle'],
+        'time' => $template_input['time'],
+        'text' => $template_input['text'],
+        'diary_id' => $template_input['diary_id'],
+    ]);
+    }
+    
+    
     $template->fill($template_input)->save();
     
     return redirect('/diaries/' . $diary->id);

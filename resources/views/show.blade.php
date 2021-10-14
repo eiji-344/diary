@@ -27,13 +27,15 @@
         　           <th><h2>Text</h2></th>
                    </tr> 
                 </thead>
+                @foreach ($templates as $template)
                 <tbody>
                    <tr>
-                       <td>時間</td>
-                       <td>サブタイトル</td>
-                       <td>テキスト</td>
+                       <td>{{ $template->time }}</td>
+                       <td>{{ $template->subtitle }}</td>
+                       <td>{{ $template->text }}</td>
                    </tr>
                 </tbody>
+                @endforeach
         　  </table>
         </div>
         <p class="edit">[<a href="/diaries/{{ $diary->id }}/edit">edit</a>]</p>
