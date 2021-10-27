@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Diary Name</h1>
-        <form action="/diaries" method="POST">
+        <form action="/diaries" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="title">
                 <h2>Title</h2>
@@ -17,14 +17,23 @@
             </div>
             <div class="body">
                 <h2>Date</h2>
-                <input type="date"name="diary[date]"/>
-            </div>
+                <input type="date"name="diary[date]" />
             <table id="template"class="template">
+            <select name="diary[with]">
+            <option value="">誰と</option>
+            <option value="一人">一人</option>
+            <option value="友達">友達</option>
+            <option value="恋人">恋人</option>
+            <option value="家族">家族</option>
+            <option value="その他">その他</option>
+            </select> 
+
                 <thead>
                    <tr>
                     <th><h2>Time</h2></th>
         　           <th><h2>Subtitle</h2></th>
         　           <th><h2>Text</h2></th>
+        　           <th><h2>Image</h2></th
                    </tr> 
                 </thead>
                 <tbody>
@@ -32,12 +41,12 @@
                     <td><input type="time" name="template[0][time]"/></td>
                     <td><input type="subtitle" name="template[0][subtitle]"/></td>
         　           <td><textarea name="template[0][text]" placeholder="〇〇に行った">{{ old('template.text') }}</textarea></td>
+        　           <td><input type="file" name="template[0][image]"/></td>
                    </tr>
                 </tbody>
         　  </table>
-        　　{{--<input type="button" value="追加" onclick="OnButtonClick()"/>--}}
-        　　<button type="button" id="test_jquery">追加</button>
-        　　{{--<button type="button" id="form-button">追加</button>--}}
+        　  </div>
+        　　<button type="button" id="add_template">追加</button>
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>

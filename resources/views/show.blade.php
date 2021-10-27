@@ -13,18 +13,14 @@
             <h1 class="title">{{ $diary->title }}</h1>
             <h3>Date</h3>
             <p>{{ $diary->date }}</p>
-            {{--<div class="content__diary">
-                <h3>本文</h3>
-                <p>{{ $template->time }}</p>
-                <p>{{ $diary->date }}</p>
-                <p class='updated_at'>{{ $diary->updated_at }}</p>
-            </div>--}}
+            <p>誰と　{{ $diary->with }}</p>
             <table class="template">
                 <thead>
                    <tr>
                     <th><h2>Time</h2></th>
         　           <th><h2>Subtitle</h2></th>
         　           <th><h2>Text</h2></th>
+        　           <th><h2>Image</h2></th
                    </tr> 
                 </thead>
                 @foreach ($templates as $template)
@@ -33,6 +29,7 @@
                        <td>{{ $template->time }}</td>
                        <td>{{ $template->subtitle }}</td>
                        <td>{{ $template->text }}</td>
+                       <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}"></td>
                    </tr>
                 </tbody>
                 @endforeach

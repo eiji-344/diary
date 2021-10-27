@@ -18,13 +18,15 @@ class CreateTemplatesTable extends Migration
             $table->text('subtitle');
             $table->time('time');
             $table->text('text');
-            $table->string('image')->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('diary_id');
             
-            $table->foreign("diary_id")->references("id")->on("diaries");
-            
-            
+            $table->foreign("diary_id")
+                  ->references("id")
+                  ->on("diaries")
+                  ->onDelete("cascade");
+    
         });
     }
 

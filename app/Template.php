@@ -10,6 +10,7 @@ class Template extends Model
     'time',
     'subtitle',
     'text',
+    'image_path',
     'diary_id'
     ];
     

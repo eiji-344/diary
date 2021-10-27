@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'DiaryController@index');
+Route::get('/', 'DiaryController@index')->middleware('auth');
+Route::get('/search', 'DiaryController@search');
+Route::get('/search/result', 'DiaryController@searchResult');
 Route::get('/diaries/create', 'DiaryController@create');
 Route::get('/diaries/{diary}', 'DiaryController@show');
 
@@ -19,3 +21,6 @@ Route::post('/diaries', 'DiaryController@store');
 Route::get('/diaries/{diary}/edit', 'DiaryController@edit');
 Route::put('/diaries/{diary}', 'DiaryController@update');
 Route::delete('/diaries/{diary}', 'DiaryController@delete');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

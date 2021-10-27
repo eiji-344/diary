@@ -17,7 +17,16 @@ class CreateDiariesTable extends Migration
             $table->bigIncrements('id');
             $table->text('title');
             $table->date('date');
+            $table->string('with');
+            $table->softDeletes();
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            
+            $table->foreign("user_id")
+                  ->references("id")
+                  ->on("users")
+                  ->onDelete("cascade")
+                  ->onUpdate('cascade');
         });
     }
 
