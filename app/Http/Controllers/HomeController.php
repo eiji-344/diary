@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Diary;
 use App\Template;
 use App\User;
+use App\Follower;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -35,6 +36,29 @@ class HomeController extends Controller
             'diaries' => $diaries, 
             ]);
     }
+    
+    // public function index(User $user, Diary $diary, Follower $follower)
+    // {
+    //     $login_user = Auth::user();
+    //     $is_following = $login_user->isFollowing($user->id);
+    //     $is_followed = $login_user->isFollowed($user->id);
+    //     $timelines = $diary->getUserTimeLine($user->id);
+    //     $diary_count = $diary->getDiaryCount($user->id);
+    //     $follow_count = $follower->getFollowCount($user->id);
+    //     $follower_count = $follower->getFollowerCount($user->id);
+
+    //     return view('home', [
+    //         'user'           => $user,
+    //         'is_following'   => $is_following,
+    //         'is_followed'    => $is_followed,
+    //         'timelines'      => $timelines,
+    //         'diary_count'    => $diary_count,
+    //         'follow_count'   => $follow_count,
+    //         'follower_count' => $follower_count
+    //     ]);
+        
+        
+    // }
     
     
 }

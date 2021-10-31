@@ -8,6 +8,7 @@
     </head>
     <body>
         <a href="/login">マイページ</a>
+        <a href="/users">ユーザ一覧</a>
         {{--<a href="/search">検索ページ</a>--}}
         <form action="/search"　method="GET">
             {{--　虫眼鏡のような画像を入れてわかりやすく --}}

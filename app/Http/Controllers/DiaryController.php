@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Diary;
 use App\Template;
 use App\User;
+use App\Follower;
 use Storage;
 use App\Http\Requests\DiaryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -23,8 +25,23 @@ class DiaryController extends Controller
     
     public function index(Diary $diary)
     {
-        return view('index')->with(['diaries' => $diary->get()]); 
+        return view('Diary.index')->with(['diaries' => $diary->get()]); 
     }
+    
+    // public function index(Diary $diary, Follower $follower)
+    // {
+    //     $user = auth()->user();
+    //     $follow_ids = $follower->followingIds($user->id);
+    //     // followed_idだけ抜き出す
+    //     $following_ids = $follow_ids->pluck('followed_id')->toArray();
+
+    //     $timelines = $tweet->getTimelines($user->id, $following_ids);
+
+    //     return view('Diary.index', [
+    //         'user'      => $user,
+    //         'timelines' => $timelines
+    //     ]);
+    // }
     
     public function search(Request $request, Diary $diary, Template $template)
     {
@@ -47,21 +64,10 @@ class DiaryController extends Controller
         
         dd($diaries);
 
-        return view('index', compact('books', 'keyword', 'stock'));
-        //return view('index')->with(['diaries' => $diary->get()]); 
+        return view('Diary.index', compact('books', 'keyword', 'stock'));
+        //return view('Diary.index')->with(['diaries' => $diary->get()]); 
     }
     
-    // public function searchResult(Request $request)
-    // {
-    //     $params = $request->query();
-
-    //     $results = Diary::serach($params)->get();
-
-    //     return view('search')->with([
-    //         //'diaries' => $diaries,
-    //         'params' => $params,
-    //     ]);
-    // }
     
     
     public function show(Diary $diary, Template $template)
@@ -70,7 +76,7 @@ class DiaryController extends Controller
         //$templates = $diary->templates;
         $templates = $diary->templates()->get();
 
-        return view('show')->with([
+        return view('Diary.show')->with([
             'diary' => $diary,
             'templates' => $templates
             ]);
@@ -78,7 +84,7 @@ class DiaryController extends Controller
     
     public function create(Diary $diary)
     {
-        return view('create')->with(['diaries' => $diary->get()]);
+        return view('Diary.create')->with(['diaries' => $diary->get()]);
     }
     
     public function store(Request $request,User $user, Diary $diary, Template $template)
@@ -115,7 +121,7 @@ class DiaryController extends Controller
     public function edit(Diary $diary, Template $template)
     {
         $templates = $diary->templates;
-        return view('edit')->with([
+        return view('Diary.edit')->with([
                 'diary' => $diary,
                 'templates' => $templates
                 ]);

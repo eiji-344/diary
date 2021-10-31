@@ -30,19 +30,22 @@ class Diary extends Model
         return $this->belongsTo("App\User");
     }
     
-    // public function scopeSerach(Builder $query, array $params): Builder {
-        
-    // parent::boot();
-    
-    // if (!empty($params['with'])) 
-    //     $query->where('with', $params['with']);
+    public function getUserTimeLine(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->paginate(50);
+    }
 
-    // if (!empty($params['keyword'])) {
-    //     $query->where(function ($query) use ($params) {
-    //         $query->where('title', 'like', '%' . $params['keyword'] . '%');
-    //     });
-    // }
-    //     return $query;
+    public function getDiaryCount(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->count();
+    }
+    
+    // 一覧画面
+    // public function getTimeLines(Int $user_id, Array $follow_ids)
+    // {
+    //     // 自身とフォローしているユーザIDを結合する
+    //     $follow_ids[] = $user_id;
+    //     return $this->whereIn('user_id', $follow_ids)->orderBy('created_at', 'DESC')->paginate(50);
     // }
     
 }
