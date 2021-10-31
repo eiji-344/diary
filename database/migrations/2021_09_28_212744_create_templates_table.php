@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiariesTable extends Migration
+class CreateTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,20 @@ class CreateDiariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('diaries', function (Blueprint $table) {
+        Schema::create('templates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('title');
-            $table->date('date');
-            $table->string('with');
-            $table->softDeletes();
+            $table->text('subtitle');
+            $table->time('time');
+            $table->text('text');
+            $table->string('image_path')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('diary_id');
             
-            $table->foreign("user_id")
+            $table->foreign("diary_id")
                   ->references("id")
-                  ->on("users")
-                  ->onDelete("cascade")
-                  ->onUpdate('cascade');
+                  ->on("diaries")
+                  ->onDelete("cascade");
+    
         });
     }
 
@@ -37,6 +37,6 @@ class CreateDiariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diaries');
+        Schema::dropIfExists('templates');
     }
 }

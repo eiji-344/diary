@@ -9,9 +9,32 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <h1 class="title">
-            {{ $diary->title }}
-        </h1>
+        <div class="content">
+            <h1 class="title">{{ $diary->title }}</h1>
+            <h3>Date</h3>
+            <p>{{ $diary->date }}</p>
+            <p>誰と　{{ $diary->with }}</p>
+            <table class="template">
+                <thead>
+                   <tr>
+                    <th><h2>Time</h2></th>
+        　           <th><h2>Subtitle</h2></th>
+        　           <th><h2>Text</h2></th>
+        　           <th><h2>Image</h2></th
+                   </tr> 
+                </thead>
+                @foreach ($templates as $template)
+                <tbody>
+                   <tr>
+                       <td>{{ $template->time }}</td>
+                       <td>{{ $template->subtitle }}</td>
+                       <td>{{ $template->text }}</td>
+                       <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}"></td>
+                   </tr>
+                </tbody>
+                @endforeach
+        　  </table>
+        </div>
         <p class="edit">[<a href="/diaries/{{ $diary->id }}/edit">edit</a>]</p>
         <form action="/diaries/{{ $diary->id }}" id="form_delete" method="post">
             @csrf
@@ -19,13 +42,6 @@
             <input type="submit" style="display:none">
             <p class='delete'>[<span onclick="return deleteDiary(this);">delete</span>]</p>
         </form>
-        <div class="content">
-            <div class="content__diary">
-                <h3>本文</h3>
-                <p>{{ $diary->body }}</p>
-                <p class='updated_at'>{{ $diary->updated_at }}</p>
-            </div>
-        </div>
         <div class="footer">
             <a href="/">戻る</a>
         </div>
@@ -39,3 +55,4 @@
         </script>
     </body>
 </html>
+

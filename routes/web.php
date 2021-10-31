@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', 'DiaryController@index');
+Route::get('/', 'DiaryController@index')->middleware('auth');
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function() {
+    
+Route::get('/search', 'DiaryController@search');
+//Route::get('/search/result', 'DiaryController@searchResult');
 Route::get('/diaries/create', 'DiaryController@create');
 Route::get('/diaries/{diary}', 'DiaryController@show');
 
@@ -19,3 +26,21 @@ Route::post('/diaries', 'DiaryController@store');
 Route::get('/diaries/{diary}/edit', 'DiaryController@edit');
 Route::put('/diaries/{diary}', 'DiaryController@update');
 Route::delete('/diaries/{diary}', 'DiaryController@delete');
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/users', 'UsersController@index');
+Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
+Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+Route::get('/users/{user}', 'UsersController@show');
+//Route::post('/diaries', 'FavoritesController@store');
+
+
+Route::resource('favorites', 'FavoritesController', ['only' => ['store', 'destroy']]);
+Route::post('/favorites', 'FavoriteController@store');
+Route::delete('/favorites/delete/{favorite}', 'FavoriteController@delete');
+
+});

@@ -36,4 +36,58 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
+    public function diaries() {
+        return $this->hasMany("App\Diary");
+    }
+     public function followers()
+    {
+        return $this->belongsToMany(self::class, 'followers', 'followed_id', 'following_id');
+    }
+
+    public function follows()
+    {
+        return $this->belongsToMany(self::class, 'followers', 'following_id', 'followed_id');
+    }
+    
+    public function getAllUsers(Int $user_id)
+    {
+        return $this->Where('id', '<>', $user_id)->paginate(5);
+    }
+    
+    public function follow(Int $user_id) 
+    {
+        return $this->follows()->attach($user_id);
+    }
+
+    // フォロー解除する
+    public function unfollow(Int $user_id)
+    {
+        return $this->follows()->detach($user_id);
+    }
+
+    // フォローしているか
+    public function isFollowing(Int $user_id) 
+    {
+        return (boolean) $this->follows()->where('followed_id', $user_id)->first(['id']);
+    }
+
+    // フォローされているか
+    public function isFollowed(Int $user_id) 
+    {
+        return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
+    }
+    
+    public function updateProfile(Array $params)
+    {
+        $this::where('id', $this->id)
+                ->update([
+                    'name'          => $params['name'],
+                    'email'         => $params['email'],
+                ]); 
+                
+                return;
+    }
 }
+
