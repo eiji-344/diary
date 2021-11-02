@@ -5,9 +5,10 @@ $(function () {
         var tr_form = '' +
       '<tr>' +
          '<td> <input type="time" name="template['+ num +'][time]"/></td>' +
-         '<td><input type="subtitle" name="template['+ num +'][subtitle]"/></td>' +
+         '<td><input type="title" name="template['+ num +'][subtitle]"/></td>' +
          '<td> <textarea name="template['+ num +'][text]" placeholder="〇〇に行った"></textarea></td>' +
          '<td> <input type="file" name="template['+ num +'][image]"/></td>' +
+         '<td> <input type="title" name="template['+ num +'][address]"/></td>' +
       '</tr>';
  
         $(tr_form).appendTo("#template");

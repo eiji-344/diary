@@ -77,4 +77,6 @@
         </main>
     </div>
 </body>
+<script src="{{ asset('/js/result.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyB36LgMlS8T7tafXcfbnY5jJblDYru9_Wg&callback=initMap" async defer></script>
 </html>

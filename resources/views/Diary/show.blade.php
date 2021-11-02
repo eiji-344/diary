@@ -20,7 +20,8 @@
                     <th><h2>Time</h2></th>
         　           <th><h2>Subtitle</h2></th>
         　           <th><h2>Text</h2></th>
-        　           <th><h2>Image</h2></th
+        　           <th><h2>Image</h2></th>
+        　            <th><h2>Address</h2></th>
                    </tr> 
                 </thead>
                 @foreach ($templates as $template)
@@ -29,7 +30,8 @@
                        <td>{{ $template->time }}</td>
                        <td>{{ $template->subtitle }}</td>
                        <td>{{ $template->text }}</td>
-                       <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}"></td>
+                       <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}" width="600" height="300"></td>
+                       <td>{{ $template->address }}</td>
                    </tr>
                 </tbody>
                 @endforeach

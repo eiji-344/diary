@@ -91,7 +91,7 @@
                                        <td>{{ $template->time }}</td>
                                        <td>{{ $template->subtitle }}</td>
                                        <td>{{ $template->text }}</td>
-                                       <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}"></td>
+                                       <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}" width="600" height="300"></td>
                                    </tr>
                                 </tbody>
                                 @endforeach

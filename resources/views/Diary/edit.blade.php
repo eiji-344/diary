@@ -34,6 +34,7 @@
         　               <th><h2>Text</h2></th>
         　               <th><h2>Image</h2></th>
         　               <th><h2>Image_change</h2></th>
+        　               <th><h2>Address</h2></th>
         　               <th><h2>delete</h2></th>
                       </tr> 
                     </thead>
@@ -42,10 +43,11 @@
                       <input type="hidden" name="template[{{ $template->id }}][id]" value="{{ $template->id }}"/>
                       <tr>
                         <td><input type="time" name="template[{{ $template->id }}][time]" value="{{ $template->time }}"/></td>
-                        <td><input type="subtitle" name="template[{{ $template->id }}][subtitle]" value="{{ $template->subtitle }}"/></td>
+                        <td><input type="title" name="template[{{ $template->id }}][subtitle]" value="{{ $template->subtitle }}"/></td>
         　               <td><textarea name="template[{{ $template->id }}][text]">{{ $template->text }}</textarea></td>
-        　               <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}"></td>
+        　               <td><img src="https://diary-backet.s3.ap-northeast-1.amazonaws.com/{{ $template->image_path }}" width="600" height="300"></td>
         　               <td><input type="file" name="template[{{ $template->id }}][image]"/></td>
+        　               <td><input type="title" name="template[{{ $template->id }}][address]" value="{{ $template->address }}"/></td>
         　               <td><input type="checkbox" name="template[{{ $template->id }}][delete]" value="delete"/></td>
                       </tr>
                       @endforeach

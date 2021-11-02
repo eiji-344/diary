@@ -33,7 +33,9 @@
                     <th><h2>Time</h2></th>
         　           <th><h2>Subtitle</h2></th>
         　           <th><h2>Text</h2></th>
-        　           <th><h2>Image</h2></th
+        　           <th><h2>Image</h2></th>
+        　           <th><h2>Address</h2></th>
+        　           
                    </tr> 
                 </thead>
                 <tbody>
@@ -42,6 +44,7 @@
                     <td><input type="subtitle" name="template[0][subtitle]"/></td>
         　           <td><textarea name="template[0][text]" placeholder="〇〇に行った">{{ old('template.text') }}</textarea></td>
         　           <td><input type="file" name="template[0][image]"/></td>
+        　            <td><input type="text" name="template[0][address]"/></td>
                    </tr>
                 </tbody>
         　  </table>

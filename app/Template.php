@@ -11,7 +11,9 @@ class Template extends Model
     'subtitle',
     'text',
     'image_path',
-    'diary_id'
+    'address',
+    'diary_id',
+    'user_id'
     ];
     
     public function diary() {

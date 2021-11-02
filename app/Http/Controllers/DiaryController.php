@@ -100,18 +100,23 @@ class DiaryController extends Controller
     ]);
     
     $template_inputs = $request['template'];
+    
+    
     foreach($template_inputs as $template_input){
         $image = $template_input['image'];
         $path = Storage::disk('s3')->putFile('diary-backet', $image, 'public');
         $template_input['image_path'] = $path;
         //$template_input['image_path'] = Storage::disk('s3')->url($path);
         $template_input['diary_id'] = $diary->id;
+        $template_input['user_id'] = $diary->user_id;
         $template = Template::create([
             'subtitle' => $template_input['subtitle'],
             'time' => $template_input['time'],
             'text' => $template_input['text'],
             'image_path' => $template_input['image_path'],
+            'address' => $template_input['address'],
             'diary_id' => $template_input['diary_id'],
+            'user_id' => $template_input['user_id'],
         ]);
     }
     
@@ -136,7 +141,7 @@ class DiaryController extends Controller
     $template_inputs = $request['template'];
     foreach($template_inputs as $template_input){
         //dd($template_input);
-        if(count($template_input) == 5){
+        if(count($template_input) == 6){
             if(isset($template_input['delete'])){
                 //消去
                 $template = Template::find($template_input['id']);
@@ -153,7 +158,7 @@ class DiaryController extends Controller
                 $template = Template::find($template_input['id']);
                 $template->fill($template_input)->save();
             }
-        }else if(count($template_input) == 6){
+        }else if(count($template_input) == 7){
             //消去
             $template = Template::find($template_input['id']);
             $template->delete();

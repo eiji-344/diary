@@ -19,12 +19,19 @@ class CreateTemplatesTable extends Migration
             $table->time('time');
             $table->text('text');
             $table->string('image_path')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('diary_id');
+            $table->unsignedBigInteger('user_id');
             
             $table->foreign("diary_id")
                   ->references("id")
                   ->on("diaries")
+                  ->onDelete("cascade");
+                  
+            $table->foreign("user_id")
+                  ->references("id")
+                  ->on("users")
                   ->onDelete("cascade");
     
         });

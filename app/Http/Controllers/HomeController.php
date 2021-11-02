@@ -30,6 +30,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $diaries = $user->diaries()->get();
+        
         //dd($diaries);
         return view('home')->with([
             'user' => $user,
