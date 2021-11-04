@@ -49,23 +49,32 @@ class DiaryController extends Controller
         $keyword = $request->input('keyword');
         $with = $request->input('with');
         
-        dd($request);
+        //dd($request);
       
         $query = Diary::query();
-    	 if (!empty($keyword)) {
-            $query ->where('title', 'LIKE', "%{$keyword}%");
-        }
+    	
 
         if (!empty($with)) {
             $query ->where('with', 'LIKE', $with);
+            
+            if (!empty($keyword)) {
+                $query ->where('title', 'LIKE', "%{$keyword}%");
+            }
+            
+            //リレーション先のテーブルで検索
+            // if (!empty($keyword)) {
+            //     Diary::whereHas('templates', function ($query) use ($keyword) {
+            //         $query ->where('subtitle', 'LIKE', "%{$keyword}%");
+            //     });
+            // }
         }
         
         $diaries = $query->get();
         
-        dd($diaries);
+        //dd($diaries);
 
-        return view('Diary.index', compact('books', 'keyword', 'stock'));
-        //return view('Diary.index')->with(['diaries' => $diary->get()]); 
+        //return view('Diary.index', compact('books', 'keyword', 'stock'));
+        return view('Diary.index')->with(['diaries' => $diaries]); 
     }
     
     
