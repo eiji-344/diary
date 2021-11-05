@@ -17,7 +17,7 @@
             </div>
             <div class="body">
                 <h2>Date</h2>
-                <input type="date"name="diary[date]" />
+                <input type="date"name="diary[date]"/>
             <table id="template"class="template">
             <select name="diary[with]">
             <option value="">誰と</option>

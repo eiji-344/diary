@@ -7,7 +7,6 @@
         <div class="col-md-8">
             <h1>マイページ</h1>
             <h1>Diary Name</h1>
-            <div id="test"  >test</div>
             <div class='diaries'>
                 @foreach ($diaries as $diary)
                     <div class='diary'>

@@ -11,6 +11,7 @@
         <a href="/users">ユーザ一覧</a>
         {{--<a href="/search">検索ページ</a>--}}
         <form action="/search"　method="GET">
+            @csrf
             {{--　虫眼鏡のような画像を入れてわかりやすく --}}
             <input name="keyword" type="text" placeholder="キーワードを入力" value="{{ $params['keyword'] ?? null }}">
             <select class="form-control" name="with">
