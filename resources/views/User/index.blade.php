@@ -14,6 +14,8 @@
         <div class="back"><a href="/">トップページ</a></div>
         <h1>ユーザ一覧</h1>
         
+        
+        
         @foreach ($all_users as $user)
             <div class="d-flex flex-row">
                 <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->name }}</a>

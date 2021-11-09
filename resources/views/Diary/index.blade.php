@@ -35,5 +35,8 @@
                 </div>
             @endforeach
         </div>
+        <div class='paginate'>
+            {{ $diaries->links() }}
+        </div>
     </body>
 </html>

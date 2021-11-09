@@ -118,12 +118,7 @@
                             @endif --}}
                             
                             {{-- favorites --}}
-                            {{-- 
-                            <div class="mr-3 d-flex align-items-center">
-                                <a href="{{ url('diary/' .$timeline->id) }}"><i class="far fa-comment fa-fw"></i></a>
-                                {{-- <p class="mb-0 text-secondary">{{ count($timeline->comments) }}</p> 
-                            </div>
-                            --}}
+                            
                             <div class="d-flex align-items-center">
                                 @if (!in_array(Auth::user()->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
                                     <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
@@ -151,6 +146,9 @@
     </div>
     <div class="my-4 d-flex justify-content-center">
         {{ $timelines->links() }}
+    </div>
+    <div class="footer">
+            <a href="/">戻る</a>
     </div>
 </div>
 @endsection

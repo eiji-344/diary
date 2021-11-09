@@ -36,11 +36,14 @@ Route::get('/users', 'UsersController@index');
 Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
 Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
 Route::get('/users/{user}', 'UsersController@show');
-//Route::post('/diaries', 'FavoritesController@store');
 
 
-Route::resource('favorites', 'FavoritesController', ['only' => ['store', 'destroy']]);
+
 Route::post('/favorites', 'FavoriteController@store');
 Route::delete('/favorites/delete/{favorite}', 'FavoriteController@delete');
+
+//Diaryフォルダ下のshow.blade.phpでのいいね機能
+// Route::post('diaries/{diary}/favorites', 'FavoriteController@store')->name('favorites');
+// Route::post('diaries/{diary}/unfavorites', 'FavoriteController@delete')->name('unfavorites');
 
 });

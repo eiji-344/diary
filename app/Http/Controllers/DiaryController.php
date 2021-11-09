@@ -25,7 +25,7 @@ class DiaryController extends Controller
     
     public function index(Diary $diary)
     {
-        return view('Diary.index')->with(['diaries' => $diary->get()]); 
+        return view('Diary.index')->with(['diaries' => $diary->getPaginateByLimit()]); 
     }
     
     // public function index(Diary $diary, Follower $follower)

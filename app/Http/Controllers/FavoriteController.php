@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Favorite;
+use App\Diary;
 
 class FavoriteController extends Controller
 {
@@ -35,4 +37,6 @@ class FavoriteController extends Controller
         }
         return back();
     }
+    
+    
 }

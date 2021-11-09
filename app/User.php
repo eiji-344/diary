@@ -89,5 +89,12 @@ class User extends Authenticatable
                 
                 return;
     }
+    
+    // public function favorites()
+    // {
+    //     return $this->belongsToMany('App\Favorite')->withTimestamps();
+    // }
+    
+    
 }
 

@@ -37,6 +37,41 @@
                 @endforeach
         　  </table>
         </div>
+        
+        {{--<div class="d-flex align-items-center">
+            @if (!in_array(Auth::user()->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
+                <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
+                    @csrf
+
+                    <input type="hidden" name="diary_id" value="{{ $timeline->id }}">
+                    <button type="submit" class="btn p-0 border-0 text-primary">イイね<i class="far fa-heart fa-fw"></i></button>
+                </form>
+            @else
+                <form method="POST"action="{{ url('favorites/delete/'.array_column($timeline->favorites->toArray(), 'id', 'user_id')[Auth::user()->id]) }}" class="mb-0">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn p-0 border-0 text-danger">イイね<i class="fas fa-heart fa-fw"></i></button>
+                </form>
+            @endif
+            <p class="mb-0 text-secondary">{{ count($timeline->favorites) }}</p>
+        </div>--}}
+        
+        {{--<div class="row justify-content-center">
+            <div class="col-md-3">
+                <form action="{{ route('favorites', $diary) }}" method="POST">
+                    @csrf
+                    <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form action="{{ route('unfavorites', $diary) }}" method="POST">
+                    @csrf
+                    <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
+                </form>
+            </div>
+    　　</div>--}}
+        
         <p class="edit">[<a href="/diaries/{{ $diary->id }}/edit">edit</a>]</p>
         <form action="/diaries/{{ $diary->id }}" id="form_delete" method="post">
             @csrf
