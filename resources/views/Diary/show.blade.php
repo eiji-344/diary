@@ -10,18 +10,19 @@
     </head>
     <body>
         <div class="content">
-            <h1 class="title">{{ $diary->title }}</h1>
+            <h1 class="title my-4 mx-4">{{ $diary->title }}</h1>
             <h3>Date</h3>
-            <p>{{ $diary->date }}</p>
-            <p>誰と　{{ $diary->with }}</p>
-            <table class="template">
+            <h4 class="mb-4">{{ $diary->date }}</h4>
+            <h3>誰と: {{ $diary->with }}</h3>
+            
+            <table class="templat table-bordered table-hover">
                 <thead>
                    <tr>
-                    <th><h2>Time</h2></th>
-        　           <th><h2>Subtitle</h2></th>
-        　           <th><h2>Text</h2></th>
-        　           <th><h2>Image</h2></th>
-        　            <th><h2>Address</h2></th>
+                    <th class="col-md-1 text-center"><h2>Time</h2></th>
+        　           <th class="col-md-1 text-center"><h2>Subtitle</h2></th>
+        　           <th class="col-md-2 text-center"><h2>Text</h2></th>
+        　           <th class="col-md-4 text-center"><h2>Image</h2></th>
+        　           <th class="col-md-2 text-center"><h2>Address</h2></th>
                    </tr> 
                 </thead>
                 @foreach ($templates as $template)
@@ -72,15 +73,15 @@
             </div>
     　　</div>--}}
         
-        <p class="edit">[<a href="/diaries/{{ $diary->id }}/edit">edit</a>]</p>
+        <p class="edit mt-5"><a href="/diaries/{{ $diary->id }}/edit">編集する</a></p>
         <form action="/diaries/{{ $diary->id }}" id="form_delete" method="post">
             @csrf
             @method('delete')
             <input type="submit" style="display:none">
-            <p class='delete'>[<span onclick="return deleteDiary(this);">delete</span>]</p>
+            <p class="delete text-primary"><span onclick="return deleteDiary(this);">削除する</span></p>
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a class="mt-3" href="/">戻る</a>
         </div>
         <script>
         function deleteDiary(e) {

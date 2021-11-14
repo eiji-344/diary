@@ -69,13 +69,14 @@ class DiaryController extends Controller
             // }
         }
         
-        $diaries = $query->get();
+        $diaries = $query->paginate(9);
         
         //dd($diaries);
 
         //return view('Diary.index', compact('books', 'keyword', 'stock'));
         return view('Diary.index')->with(['diaries' => $diaries]); 
     }
+    
     
     
     

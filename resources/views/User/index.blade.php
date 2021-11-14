@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
     <head>
         <meta charset="utf-8">
         <title>Diary</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+@section('content')
     <body>
-        @extends('layouts.app')
-
-        @section('content')
-        <a href="/login">マイページ</a>
-        <div class="back"><a href="/">トップページ</a></div>
-        <h1>ユーザ一覧</h1>
+        <a class="mb-3 mx-3" href="/login">マイページ</a>
+        <a class="mb-3" href="/">トップページ</a>
         
-        
+        <h1 class="my-3">ユーザ一覧</h1>
         
         @foreach ($all_users as $user)
             <div class="d-flex flex-row">
@@ -25,7 +23,7 @@
                     <span class="px-1 bg-secondary text-light">フォローされています</span>
                 </div>
             @endif
-            <div class="d-flex justify-content-end flex-grow-1">
+            <div class="d-flex justify-content-center flex-grow-1">
                 @if (auth()->user()->isFollowing($user->id))
                     <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
                         {{ csrf_field() }}
@@ -43,9 +41,9 @@
             </div>
             
         @endforeach
-        <div class="d-flex justify-content-start">
+        <div class="d-flex justify-content-start mt-5">
         {{ $all_users->links() }}
         </div>
-        @endsection
     </body>
+ @endsection
 </html>
