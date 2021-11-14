@@ -10,7 +10,12 @@ class DiaryRequest extends FormRequest
     {
         return [
             'diary.title' => 'required|string|max:100',
-            'diary.body' => 'required|string|max:4000',
+            'diary.date' => 'required|date',
+            'diary.with' => 'required',
+            'template.time' => 'required',
+            'template.subtitle' => 'required',
+            'template.text' => 'required',
+            
         ];
     }
 }

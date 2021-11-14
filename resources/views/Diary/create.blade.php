@@ -21,7 +21,8 @@
             </div>
             <div class="body">
                 <h2>Date</h2>
-                <input class="mb-5" type="date"name="diary[date]"/>
+                <input class="mb-5" type="date" name="diary[date]" value="{{ old('diary.date') }}"/>
+                
             <select name="diary[with]">
             <option value="">誰と</option>
             <option value="一人">一人</option>
@@ -30,6 +31,9 @@
             <option value="家族">家族</option>
             <option value="その他">その他</option>
             </select> 
+            
+            <p class="date__error" style="color:red">{{ $errors->first('diary.date') }}</p>
+            <p class="with__error" style="color:red">{{ $errors->first('diary.with') }}</p>
             
             <table id="template"class="template table-bordered table-hover">
                 <thead>
@@ -43,14 +47,19 @@
                 </thead>
                 <tbody>
                    <tr>
-                    <td><input type="time" name="template[0][time]"/></td>
-                    <td><input type="subtitle" name="template[0][subtitle]"/></td>
-        　           <td><textarea name="template[0][text]" placeholder="〇〇に行った">{{ old('template.text') }}</textarea></td>
+                    <td><input type="time" name="template[0][time]" value="{{ old('template.time') }}"/></td>
+                    <td><input type="subtitle" name="template[0][subtitle]" value="{{ old('template.subtitle') }}"/></td>
+        　           <td><textarea name="template[0][text]" placeholder="〇〇に行った" cols=30 rows=3>{{ old('template.text') }}</textarea></td>
         　           <td><input type="file" name="template[0][image]"/></td>
-        　           <td><input type="text" name="template[0][address]" placeholder="入力しなくてもよいです" /></td>
+        　           <td><input type="text" name="template[0][address]" placeholder="入力しなくてもよいです" value="{{ old('template.address') }}" /></td>
                    </tr>
                 </tbody>
         　  </table>
+        　  
+        　  <p class="time__error" style="color:red">{{ $errors->first('template.time') }}</p>
+            <p class="subtitle__error" style="color:red">{{ $errors->first('template.subtitle') }}</p>
+            <p class="text__error" style="color:red">{{ $errors->first('template.text') }}</p>
+        　  
         　  </div>
         　　<button class="btn btn-primary" type="button" id="add_template">追加</button>
             <button class="btn btn-primary ml-3" type="submit" value="保存"/>保存</button>

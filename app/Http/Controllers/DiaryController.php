@@ -28,22 +28,7 @@ class DiaryController extends Controller
         return view('Diary.index')->with(['diaries' => $diary->getPaginateByLimit()]); 
     }
     
-    // public function index(Diary $diary, Follower $follower)
-    // {
-    //     $user = auth()->user();
-    //     $follow_ids = $follower->followingIds($user->id);
-    //     // followed_idだけ抜き出す
-    //     $following_ids = $follow_ids->pluck('followed_id')->toArray();
-
-    //     $timelines = $tweet->getTimelines($user->id, $following_ids);
-
-    //     return view('Diary.index', [
-    //         'user'      => $user,
-    //         'timelines' => $timelines
-    //     ]);
-    // }
-    
-    public function search(Request $request, Diary $diary, Template $template)
+    public function search(DiaryRequest $request, Diary $diary, Template $template)
     {
         
         $keyword = $request->input('keyword');
@@ -71,9 +56,6 @@ class DiaryController extends Controller
         
         $diaries = $query->paginate(9);
         
-        //dd($diaries);
-
-        //return view('Diary.index', compact('books', 'keyword', 'stock'));
         return view('Diary.index')->with(['diaries' => $diaries]); 
     }
     
@@ -97,7 +79,8 @@ class DiaryController extends Controller
         return view('Diary.create')->with(['diaries' => $diary->get()]);
     }
     
-    public function store(Request $request,User $user, Diary $diary, Template $template)
+    
+    public function store(DiaryRequest $request,User $user, Diary $diary, Template $template)
     {
     $user_id = Auth::id();
     $diary_input = $request['diary'];
@@ -142,7 +125,7 @@ class DiaryController extends Controller
                 ]);
     }
 
-    public function update(Request $request, Diary $diary, Template $template)
+    public function update(DiaryRequest $request, Diary $diary, Template $template)
     {
     $input_diary['user_id'] = Auth::id();
     $input_diary = $request['diary'];

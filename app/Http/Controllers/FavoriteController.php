@@ -9,7 +9,7 @@ use App\Diary;
 
 class FavoriteController extends Controller
 {
-    public function store(Request $request, Favorite $favorite)
+    public function store(DiaryRequest $request, Favorite $favorite)
     {
         $user = auth()->user();
         $diary_id = $request->diary_id;
