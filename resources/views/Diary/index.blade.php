@@ -34,7 +34,7 @@
         </form>
         
         <h1 class="my-4 mx-4">Diary</h1>
-        <a class="btn-default btn-lg" href='/diaries/create'>create</a>
+        <a class="btn-default btn-lg" href='/diaries/create'>新規作成</a>
         
         <div class="container">
         <div class='diaries'>

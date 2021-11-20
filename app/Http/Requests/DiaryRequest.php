@@ -12,9 +12,9 @@ class DiaryRequest extends FormRequest
             'diary.title' => 'required|string|max:100',
             'diary.date' => 'required|date',
             'diary.with' => 'required',
-            'template.time' => 'required',
-            'template.subtitle' => 'required',
-            'template.text' => 'required',
+            //'template.time' => 'required',
+            //'template.subtitle' => 'required',
+            //'template.text' => 'required',
             
         ];
     }

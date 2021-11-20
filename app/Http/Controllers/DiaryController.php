@@ -33,9 +33,7 @@ class DiaryController extends Controller
         
         $keyword = $request->input('keyword');
         $with = $request->input('with');
-        
-        //dd($request);
-      
+    
         $query = Diary::query();
     	
 

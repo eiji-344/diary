@@ -56,9 +56,9 @@
                 </tbody>
         　  </table>
         　  
-        　  <p class="time__error" style="color:red">{{ $errors->first('template.time') }}</p>
+        　  {{--<p class="time__error" style="color:red">{{ $errors->first('template.time') }}</p>
             <p class="subtitle__error" style="color:red">{{ $errors->first('template.subtitle') }}</p>
-            <p class="text__error" style="color:red">{{ $errors->first('template.text') }}</p>
+            <p class="text__error" style="color:red">{{ $errors->first('template.text') }}</p>--}}
         　  
         　  </div>
         　　<button class="btn btn-primary" type="button" id="add_template">追加</button>
