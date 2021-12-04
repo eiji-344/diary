@@ -39,6 +39,34 @@ class HomeController extends Controller
             ]);
     }
     
+    public function followShow(User $user, Diary $diary, Template $template)
+    {
+        $user = Auth::user();
+        $diaries = $user->diaries()->get();
+        $user_id = Auth::id();
+        $following_ids = $user->isFollowing($user->id);
+        
+        //dd($diaries);
+        dd($following_ids);
+        return view('followShow')->with([
+            'user' => $user,
+            'diaries' => $diaries, 
+            'following_ids' => $following_ids, 
+            ]);
+    }
+    
+    public function favoriteShow(User $user, Diary $diary, Template $template)
+    {
+        $user = Auth::user();
+        $diaries = $user->diaries()->get();
+        
+        //dd($diaries);
+        return view('followShow')->with([
+            'user' => $user,
+            'diaries' => $diaries, 
+            ]);
+    }
+    
     // public function index(User $user, Diary $diary, Follower $follower)
     // {
     //     $login_user = Auth::user();

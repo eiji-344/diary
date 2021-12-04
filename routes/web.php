@@ -42,6 +42,9 @@ Route::get('/users/{user}', 'UsersController@show');
 Route::post('/favorites', 'FavoriteController@store');
 Route::delete('/favorites/delete/{favorite}', 'FavoriteController@delete');
 
+Route::get('/home/follow', 'HomeController@followShow');
+Route::get('/home/fovorite', 'HomeController@fovorit');
+
 //Diaryフォルダ下のshow.blade.phpでのいいね機能
 // Route::post('diaries/{diary}/favorites', 'FavoriteController@store')->name('favorites');
 // Route::post('diaries/{diary}/unfavorites', 'FavoriteController@delete')->name('unfavorites');

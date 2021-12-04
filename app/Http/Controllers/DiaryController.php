@@ -28,7 +28,7 @@ class DiaryController extends Controller
         return view('Diary.index')->with(['diaries' => $diary->getPaginateByLimit()]); 
     }
     
-    public function search(DiaryRequest $request, Diary $diary, Template $template)
+    public function search(Request $request, Diary $diary, Template $template)
     {
         
         $keyword = $request->input('keyword');
