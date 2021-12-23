@@ -19,6 +19,10 @@ Instagramのように一つの場所にスポットライトを当てて記録�
 
 ・自分が行きたい場所や誰と行くかなどの条件で調べられるように検索機能をつけました。
 
+### 成果物
+
+https://diary-log-app.herokuapp.com
+
 #### テストアカウント
 E-mail Address：test1@test.com
 
