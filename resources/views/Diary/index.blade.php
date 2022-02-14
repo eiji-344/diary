@@ -11,8 +11,8 @@
 @section('content')
 
     <body>
-        <a class="mb-3 mx-3" href="/login">マイページ</a>
-        <a class="mb-3" href="/users">ユーザ一覧</a>
+        {{--<a class="mb-3 mx-3" href="/login">マイページ</a>--}}
+        {{--<a class="mb-3" href="/users">ユーザ一覧</a>--}}
         
         {{--<a href="/search">検索ページ</a>--}}
         <form action="/search"　method="GET">
@@ -53,5 +53,8 @@
             {{ $diaries->links() }}
         </div>
     </body>
+    <footer>
+        <p>©️2020 三好英志</p>
+    </footer>
 @endsection
 </html>
